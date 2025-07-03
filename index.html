@@ -1,55 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Para Nicole 💖</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #ffdde1, #ee9ca7);
-      color: #333;
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      padding: 50px;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cartita Animada para Nicole</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #f7d6ff, #8e44ad);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #3d005b;
+  }
+  .carta {
+    background: #ffffffdd;
+    padding: 40px 50px;
+    border-radius: 20px;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(142, 68, 173, 0.5);
+    text-align: center;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    h1 {
-      font-size: 48px;
-      color: #c0392b;
-    }
-
-    p {
-      font-size: 22px;
-      max-width: 700px;
-      margin: 0 auto;
-      background: #fff8f8;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-    }
-
-    .firma {
-      margin-top: 30px;
-      font-style: italic;
-      font-size: 18px;
-    }
-
-    .emoji {
-      font-size: 32px;
-      margin-top: 20px;
-    }
-  </style>
+  }
+  .titulo {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #6f2da8;
+    text-shadow: 1px 1px 4px #a678d1;
+  }
+  .contenido p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+  .firma {
+    margin-top: 30px;
+    font-style: italic;
+    font-size: 16px;
+    color: #9b5de5;
+  }
+  button {
+    margin-top: 25px;
+    background-color: #9b5de5;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #7a3bbd;
+  }
+  #emoji {
+    font-size: 40px;
+    margin-top: 20px;
+    display: none;
+    user-select: none;
+  }
+</style>
 </head>
 <body>
 
-  <h1>Para ti, Nicolchita 💘</h1>
-  <p>
-    Hoy no te escribo solo por escribir, sino porque te mereces un pequeño espacio donde puedas sonreír.<br><br>
-    Gracias por estar, por ser tú, por esas cosas simples que haces que me alegran los días.<br>
-    Esta cartita digital es un pedacito de lo que me inspiras. Ojalá te saque una sonrisa 😌💖
-  </p>
+<div class="carta">
+  <div class="titulo">Hola Nicole 💜</div>
+  <div class="contenido" id="textoContenido">
+    <p>Quería tomar un momento para decirte que eres increíble y que iluminas todo a tu alrededor.</p>
+    <p>Gracias por ser esa persona especial que alegra los días.</p>
+  </div>
+  <div class="firma">Con mucho cariño, <br>Tu amigo que te admira</div>
 
-  <div class="emoji">🌸🌟🥺💌</div>
-  <div class="firma">Con cariño,<br>Tu admirador secreto (o no tan secreto 😳)</div>
+  <button id="botonCambiar">Mostrar sorpresa</button>
+  <div id="emoji">🎉✨</div>
+</div>
+
+<script>
+  const boton = document.getElementById('botonCambiar');
+  const emoji = document.getElementById('emoji');
+  const texto = document.getElementById('textoContenido');
+
+  boton.addEventListener('click', () => {
+    if (emoji.style.display === 'none') {
+      emoji.style.display = 'block';
+      boton.textContent = 'Ocultar sorpresa';
+      texto.innerHTML = '<p>¡Eres una persona maravillosa y mereces toda la felicidad del mundo!</p>';
+    } else {
+      emoji.style.display = 'none';
+      boton.textContent = 'Mostrar sorpresa';
+      texto.innerHTML = `
+        <p>Quería tomar un momento para decirte que eres increíble y que iluminas todo a tu alrededor.</p>
+        <p>Gracias por ser esa persona especial que alegra los días.</p>
+      `;
+    }
+  });
+</script>
 
 </body>
 </html>
