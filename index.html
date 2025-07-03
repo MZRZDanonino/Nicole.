@@ -19,14 +19,12 @@
     overflow: hidden;
   }
 
-  /* Contenedor principal centrado */
   .container {
     position: relative;
     width: 480px;
     height: 320px;
   }
 
-  /* Corazón grande y centrado corregido */
   .heart {
     width: 150px;
     height: 150px;
@@ -60,7 +58,6 @@
       inset 0 0 12px 4px #ffffffcc;
   }
 
-  /* Carta estilo vidrio esmerilado mejorado */
   .card {
     position: absolute;
     top: 50%;
@@ -128,10 +125,8 @@
 
 <div class="container">
 
-  <!-- Corazón inicial -->
   <div class="heart" id="heart" title="Haz click aquí para abrir la carta"></div>
 
-  <!-- Primera carta -->
   <div class="card" id="card1">
     <h2>Nicolsita,</h2>
     <p>Te enseñé cuánto te amo, te adoro, te aprecio, con el tiempo que me tomó hacer esto, con todo mi cariño y mi ser prometo protegerte, entonces, si es así...</p>
@@ -140,7 +135,6 @@
     </div>
   </div>
 
-  <!-- Segunda carta con mensaje sorpresa -->
   <div class="card" id="card2">
     <h2>¿Me dejarías ser tu novio?</h2>
     <p>Si tú te sientes conforme, segura y cómoda,<br>¿Me permitirías dar el siguiente paso?<br>Prometo cuidarte y amarte con todo mi ser.</p>
@@ -151,12 +145,16 @@
 
 </div>
 
+<!-- Audio mata suegras -->
+<audio id="soundMata" src="https://www.youtube.com/watch?v=ZcigJUk61BE" preload="auto"></audio>
+
 <script>
   const heart = document.getElementById('heart');
   const card1 = document.getElementById('card1');
   const card2 = document.getElementById('card2');
   const btnNext1 = document.getElementById('btnNext1');
   const btnBack2 = document.getElementById('btnBack2');
+  const soundMata = document.getElementById('soundMata');
 
   heart.addEventListener('click', () => {
     heart.style.pointerEvents = 'none';
@@ -168,6 +166,8 @@
   });
 
   btnNext1.addEventListener('click', () => {
+    soundMata.currentTime = 0;
+    soundMata.play();
     card1.classList.remove('active');
     setTimeout(() => {
       card2.classList.add('active');
