@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Para ti Nicolsita <3 </title>
+<title>Cartita con Corazón para Nicole</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
@@ -26,7 +26,7 @@
     height: 320px;
   }
 
-  /* Corazón grande y centrado */
+  /* Corazón grande y centrado corregido */
   .heart {
     width: 150px;
     height: 150px;
@@ -36,46 +36,49 @@
     left: 50%;
     transform: translate(-50%, -50%);
     clip-path: polygon(
-      50% 0%,
-      85% 20%,
-      100% 60%,
-      80% 100%,
-      50% 80%,
-      20% 100%,
-      0% 60%,
-      15% 20%
+      50% 100%,
+      85% 80%,
+      100% 40%,
+      80% 0%,
+      50% 20%,
+      20% 0%,
+      0% 40%,
+      15% 80%
     );
     cursor: pointer;
     box-shadow:
       0 0 15px 4px #ff0000,
-      0 0 30px 10px #800000;
+      0 0 30px 10px #800000,
+      inset 0 0 8px 2px #ffffffaa;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .heart:hover {
     transform: translate(-50%, -50%) scale(1.1);
     box-shadow:
       0 0 25px 6px #ff4444,
-      0 0 50px 15px #cc0000;
+      0 0 50px 15px #cc0000,
+      inset 0 0 12px 4px #ffffffcc;
   }
 
-  /* Carta estilo vidrio esmerilado */
+  /* Carta estilo vidrio esmerilado mejorado */
   .card {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
     max-width: 460px;
-    background: rgba(15, 15, 15, 0.85);
+    background: rgba(30, 30, 30, 0.9);
     backdrop-filter: blur(18px);
     border-radius: 25px;
     padding: 40px 50px;
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
     color: #fff;
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.6s ease, transform 0.6s ease;
     text-align: center;
+    border: 2px solid #fff;
   }
   .card.active {
     opacity: 1;
@@ -94,10 +97,10 @@
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 25px;
-    color: #ddd;
+    color: #eee;
   }
 
-  .btn-next {
+  .btn-next, .btn-back {
     background: linear-gradient(45deg, #ff0000, #cc0000);
     border: none;
     border-radius: 30px;
@@ -108,9 +111,16 @@
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(255, 0, 0, 0.7);
     transition: background 0.3s ease;
+    margin: 0 10px 0 10px;
   }
-  .btn-next:hover {
+  .btn-next:hover, .btn-back:hover {
     background: linear-gradient(45deg, #cc0000, #ff4444);
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
   }
 </style>
 </head>
@@ -125,13 +135,18 @@
   <div class="card" id="card1">
     <h2>Nicolsita,</h2>
     <p>Te enseñé cuánto te amo, te adoro, te aprecio, con el tiempo que me tomó hacer esto, con todo mi cariño y mi ser prometo protegerte, entonces, si es así...</p>
-    <button class="btn-next" id="btnNext1">Siguiente</button>
+    <div class="btn-group">
+      <button class="btn-next" id="btnNext1">Siguiente</button>
+    </div>
   </div>
 
   <!-- Segunda carta con mensaje sorpresa -->
   <div class="card" id="card2">
     <h2>¿Me dejarías ser tu novio?</h2>
     <p>Si tú te sientes conforme, segura y cómoda,<br>¿Me permitirías dar el siguiente paso?<br>Prometo cuidarte y amarte con todo mi ser.</p>
+    <div class="btn-group">
+      <button class="btn-back" id="btnBack2">Volver</button>
+    </div>
   </div>
 
 </div>
@@ -141,24 +156,28 @@
   const card1 = document.getElementById('card1');
   const card2 = document.getElementById('card2');
   const btnNext1 = document.getElementById('btnNext1');
+  const btnBack2 = document.getElementById('btnBack2');
 
-  // Al hacer click en el corazón
   heart.addEventListener('click', () => {
-    heart.style.pointerEvents = 'none'; // para que no se pueda clickear otra vez
+    heart.style.pointerEvents = 'none';
     heart.style.transition = 'transform 0.5s ease';
     heart.style.transform += ' scale(0.8)';
-    // Mostrar primera carta con animación
     setTimeout(() => {
       card1.classList.add('active');
     }, 500);
   });
 
-  // Al hacer click en el botón Siguiente de la primera carta
   btnNext1.addEventListener('click', () => {
     card1.classList.remove('active');
-    // Mostrar segunda carta con animación
     setTimeout(() => {
       card2.classList.add('active');
+    }, 500);
+  });
+
+  btnBack2.addEventListener('click', () => {
+    card2.classList.remove('active');
+    setTimeout(() => {
+      card1.classList.add('active');
     }, 500);
   });
 </script>
