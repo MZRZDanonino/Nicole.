@@ -3,106 +3,155 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cartita Animada para Nicole</title>
+<title>Para Nicole 💜</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
   body {
     margin: 0; padding: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #f7d6ff, #8e44ad);
+    background: linear-gradient(135deg, #7b2ff7, #f107a3);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #3d005b;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    overflow: hidden;
   }
-  .carta {
-    background: #ffffffdd;
-    padding: 40px 50px;
-    border-radius: 20px;
-    max-width: 420px;
-    box-shadow: 0 10px 30px rgba(142, 68, 173, 0.5);
+
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 50px 60px;
+    max-width: 460px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
     text-align: center;
-    animation: fadeInUp 1s ease forwards;
+    position: relative;
+    animation: fadeInScale 1.2s ease forwards;
     opacity: 0;
-    transform: translateY(30px);
+    transform: scale(0.8);
   }
-  @keyframes fadeInUp {
+
+  @keyframes fadeInScale {
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1);
     }
   }
-  .titulo {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #6f2da8;
-    text-shadow: 1px 1px 4px #a678d1;
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.6rem;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
   }
-  .contenido p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 18px;
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.25);
   }
-  .firma {
-    margin-top: 30px;
-    font-style: italic;
-    font-size: 16px;
-    color: #9b5de5;
+
+  .dots {
+    font-size: 3rem;
+    margin: 20px 0;
+    animation: blinkDots 1.5s infinite;
   }
+
+  @keyframes blinkDots {
+    0%, 50%, 100% {
+      opacity: 1;
+    }
+    25%, 75% {
+      opacity: 0;
+    }
+  }
+
   button {
-    margin-top: 25px;
-    background-color: #9b5de5;
+    background: #fff;
+    color: #7b2ff7;
     border: none;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 10px;
-    font-size: 16px;
+    border-radius: 35px;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(123, 47, 247, 0.6);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
+
   button:hover {
-    background-color: #7a3bbd;
+    background: #7b2ff7;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(123, 47, 247, 0.9);
   }
-  #emoji {
-    font-size: 40px;
-    margin-top: 20px;
+
+  .hidden {
     display: none;
-    user-select: none;
+  }
+
+  .mensaje-sorpresa {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    font-style: italic;
+    background: rgba(255,255,255,0.15);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.3);
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    animation: fadeInText 1s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInText {
+    to {
+      opacity: 1;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="carta">
-  <div class="titulo">Hola Nicole 💜</div>
-  <div class="contenido" id="textoContenido">
-    <p>Quería tomar un momento para decirte que eres increíble y que iluminas todo a tu alrededor.</p>
-    <p>Gracias por ser esa persona especial que alegra los días.</p>
-  </div>
-  <div class="firma">Con mucho cariño, <br>Tu amigo que te admira</div>
+<div class="container">
+  <h1>Nicolsita,</h1>
+  <p>Te enseñé cuánto te amo, te adoro, te aprecio, con el tiempo que me tomó hacer esto, con todo mi cariño y mi ser prometo protegerte, entonces, si es así</p>
+  <div class="dots">...</div>
+  <button id="btnMostrar">Mostrar sorpresa</button>
 
-  <button id="botonCambiar">Mostrar sorpresa</button>
-  <div id="emoji">🎉✨</div>
+  <div id="mensajeSorpresa" class="mensaje-sorpresa hidden">
+    <p>Si tú te sientes conforme, segura y cómoda,<br>
+    ¿Me permitirías dar el siguiente paso?<br>
+    ¿Me dejarías ser tu novio?<br>
+    Prometo cuidarte y amarte con todo mi ser.</p>
+  </div>
 </div>
 
-<script>
-  const boton = document.getElementById('botonCambiar');
-  const emoji = document.getElementById('emoji');
-  const texto = document.getElementById('textoContenido');
+<audio id="audioFondo" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2021/12/08/audio_9d435f5ca6.mp3?filename=soft-melody-6970.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
+</audio>
 
-  boton.addEventListener('click', () => {
-    if (emoji.style.display === 'none') {
-      emoji.style.display = 'block';
-      boton.textContent = 'Ocultar sorpresa';
-      texto.innerHTML = '<p>¡Eres una persona maravillosa y mereces toda la felicidad del mundo!</p>';
+<script>
+  const btn = document.getElementById('btnMostrar');
+  const mensaje = document.getElementById('mensajeSorpresa');
+  const audio = document.getElementById('audioFondo');
+
+  // Para que el audio comience solo cuando el usuario interactúe (por políticas de navegadores)
+  btn.addEventListener('click', () => {
+    if (mensaje.classList.contains('hidden')) {
+      mensaje.classList.remove('hidden');
+      mensaje.style.animation = 'fadeInText 1s ease forwards';
+      btn.textContent = 'Ocultar sorpresa';
+      audio.play().catch(() => {
+        // Si no puede reproducir automáticamente, se ignora.
+      });
     } else {
-      emoji.style.display = 'none';
-      boton.textContent = 'Mostrar sorpresa';
-      texto.innerHTML = `
-        <p>Quería tomar un momento para decirte que eres increíble y que iluminas todo a tu alrededor.</p>
-        <p>Gracias por ser esa persona especial que alegra los días.</p>
-      `;
+      mensaje.classList.add('hidden');
+      btn.textContent = 'Mostrar sorpresa';
+      audio.pause();
+      audio.currentTime = 0;
     }
   });
 </script>
