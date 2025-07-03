@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Nicole 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #c0392b;
+    }
+
+    p {
+      font-size: 22px;
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff8f8;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    }
+
+    .firma {
+      margin-top: 30px;
+      font-style: italic;
+      font-size: 18px;
+    }
+
+    .emoji {
+      font-size: 32px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Para ti, Nicolchita 💘</h1>
+  <p>
+    Hoy no te escribo solo por escribir, sino porque te mereces un pequeño espacio donde puedas sonreír.<br><br>
+    Gracias por estar, por ser tú, por esas cosas simples que haces que me alegran los días.<br>
+    Esta cartita digital es un pedacito de lo que me inspiras. Ojalá te saque una sonrisa 😌💖
+  </p>
+
+  <div class="emoji">🌸🌟🥺💌</div>
+  <div class="firma">Con cariño,<br>Tu admirador secreto (o no tan secreto 😳)</div>
+
+</body>
+</html>
