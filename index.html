@@ -3,163 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cartita para Nicole</title>
+  <title>Para Nicole 💖</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+    /* Fondo animado */
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-family: 'Montserrat', sans-serif;
+      background: #fff;
       overflow: hidden;
+      color: #800000;
+    }
+
+    /* Partículas suaves */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(#ffcccc 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      z-index: 0;
+      animation: moveBg 60s linear infinite;
+    }
+
+    @keyframes moveBg {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
     }
 
     .container {
       position: relative;
-      width: 480px;
-      height: 100%;
-      max-height: 600px;
+      width: 100%;
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 30px;
+      background: #fff;
+      border: 10px double #ff0000;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 20px;
     }
 
-    /* Nuevo corazón SVG animado */
+    h1.titulo {
+      text-align: center;
+      font-size: 2rem;
+      color: #cc0000;
+      margin-bottom: 30px;
+      text-shadow: 0 0 5px #ff9999;
+    }
+
+    /* Corazón animado */
     .heart {
       width: 120px;
       height: 120px;
-      background: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      margin: 0 auto 30px auto;
       cursor: pointer;
+      animation: beat 1.5s infinite;
+      filter: drop-shadow(0 0 10px #ff8080);
       transition: transform 0.3s ease;
     }
 
     .heart:hover {
-      transform: translate(-50%, -50%) scale(1.1);
+      transform: scale(1.1);
     }
 
-    .heart svg {
-      width: 100%;
-      height: 100%;
-      fill: #e60026;
-      filter: drop-shadow(0 0 8px #ff5b5b);
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.07); }
-      100% { transform: scale(1); }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     .card {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      max-width: 460px;
-      background: #fff0f0;
-      border-radius: 25px;
-      padding: 40px 30px;
+      display: none;
+      background: #fff5f5;
+      border: 3px solid #ff6666;
+      border-radius: 20px;
+      padding: 25px;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-      color: #aa0000;
-      transform: translate(-50%, -50%) scale(0.8);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      text-align: center;
-      border: 3px solid #e60026;
+      animation: fadeIn 0.8s ease forwards;
     }
 
-    .card.active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translate(-50%, -50%) scale(1);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .card img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
     }
 
     .card h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
       color: #e60026;
+      margin-bottom: 15px;
     }
 
     .card p {
       font-size: 1.1rem;
       line-height: 1.6;
-      margin-bottom: 25px;
-      color: #800000;
+      color: #660000;
     }
 
-    .mi-imagen {
-      width: 100%;
-      max-height: 180px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(200, 0, 0, 0.2);
-      margin-bottom: 20px;
-    }
-
-    .btn-next, .btn-back {
+    .btn {
+      display: inline-block;
       background: linear-gradient(45deg, #ff0000, #cc0000);
-      border: none;
-      border-radius: 30px;
+      color: #fff;
       padding: 12px 30px;
       font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      cursor: pointer;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
       box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
-      transition: background 0.3s ease;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
     }
 
-    .btn-next:hover, .btn-back:hover {
-      background: linear-gradient(45deg, #cc0000, #ff4444);
+    .btn:hover {
+      background: linear-gradient(45deg, #cc0000, #ff3333);
+      transform: scale(1.05);
     }
 
     .btn-group {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
+<div class="particles"></div>
 
-  <!-- Corazón SVG más bonito -->
-  <div class="heart" id="heart" title="Haz click aquí para abrir la carta">
+<div class="container">
+  <h1 class="titulo">Para Nicole, con todo mi amor 💌</h1>
+
+  <!-- Corazón -->
+  <div class="heart" id="heart">
     <svg viewBox="0 0 32 29.6">
-      <path d="M23.6,0c-2.9,0-5.4,1.4-7.6,4.1C13.8,1.4,11.3,0,8.4,0C3.8,0,0,3.8,0,8.4c0,8.4,16,21.2,16,21.2s16-12.8,16-21.2
-      C32,3.8,28.2,0,23.6,0z"/>
+      <path fill="#ff0000" d="M23.6,0c-2.9,0-5.4,1.4-7.6,4.1C13.8,1.4,11.3,0,8.4,0C3.8,0,0,3.8,0,8.4
+        c0,8.4,16,21.2,16,21.2s16-12.8,16-21.2C32,3.8,28.2,0,23.6,0z"/>
     </svg>
   </div>
 
   <!-- Carta 1 -->
   <div class="card" id="card1">
-    <img src="https://i.pinimg.com/736x/17/f8/53/17f853813516f7d7f1c7da59ad8a05be.jpg" alt="Flores" class="mi-imagen">
+    <img src="https://i.pinimg.com/736x/17/f8/53/17f853813516f7d7f1c7da59ad8a05be.jpg" alt="Flores">
     <h2>Nicolsita,</h2>
     <p>Te enseñé cuánto te amo, te adoro, te aprecio, con el tiempo que me tomó hacer esto, con todo mi cariño y mi ser prometo protegerte, entonces, si es así...</p>
     <div class="btn-group">
-      <button class="btn-next" id="btnNext1">Mostrar Sorpresa</button>
+      <button class="btn" id="btnNext">Mostrar sorpresa 💘</button>
     </div>
   </div>
 
   <!-- Carta 2 -->
   <div class="card" id="card2">
-    <h2>¿Me dejarías ser tu novio?</h2>
-    <p>Si tú te sientes conforme, segura y cómoda,<br>¿Me permitirías dar el siguiente paso?<br>Prometo cuidarte y amarte con todo mi ser.</p>
-    <img src="https://i.pinimg.com/736x/73/37/3c/73373c520d0ff2dae553799928fc0317.jpg" alt="Carta con rosas" class="mi-imagen">
+    <h2>¿Me dejarías ser tu novio? 💍</h2>
+    <p>Si tú te sientes conforme, segura y cómoda,<br>¿me permitirías dar el siguiente paso?<br><strong>Prometo cuidarte y amarte con todo mi ser.</strong></p>
+    <img src="https://i.pinimg.com/736x/73/37/3c/73373c520d0ff2dae553799928fc0317.jpg" alt="Carta con rosas">
     <div class="btn-group">
-      <button class="btn-back" id="btnBack2">Volver</button>
+      <button class="btn" id="btnBack">Volver</button>
     </div>
   </div>
-
 </div>
 
 <!-- Sonido mata suegras -->
@@ -169,33 +181,25 @@
   const heart = document.getElementById('heart');
   const card1 = document.getElementById('card1');
   const card2 = document.getElementById('card2');
-  const btnNext1 = document.getElementById('btnNext1');
-  const btnBack2 = document.getElementById('btnBack2');
+  const btnNext = document.getElementById('btnNext');
+  const btnBack = document.getElementById('btnBack');
   const soundMata = document.getElementById('soundMata');
 
   heart.addEventListener('click', () => {
-    heart.style.pointerEvents = 'none';
-    heart.style.transition = 'transform 0.5s ease';
-    heart.style.transform += ' scale(0.8)';
-    setTimeout(() => {
-      card1.classList.add('active');
-    }, 500);
+    heart.style.display = "none";
+    card1.style.display = "block";
   });
 
-  btnNext1.addEventListener('click', () => {
+  btnNext.addEventListener('click', () => {
     soundMata.currentTime = 0;
     soundMata.play();
-    card1.classList.remove('active');
-    setTimeout(() => {
-      card2.classList.add('active');
-    }, 500);
+    card1.style.display = "none";
+    card2.style.display = "block";
   });
 
-  btnBack2.addEventListener('click', () => {
-    card2.classList.remove('active');
-    setTimeout(() => {
-      card1.classList.add('active');
-    }, 500);
+  btnBack.addEventListener('click', () => {
+    card2.style.display = "none";
+    card1.style.display = "block";
   });
 </script>
 
